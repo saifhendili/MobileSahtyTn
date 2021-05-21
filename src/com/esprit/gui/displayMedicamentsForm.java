@@ -177,7 +177,7 @@ createLineSeparator();
          ServiceResrvation.getInstance().addReservation(rec);
            ToastBar.Status status = ToastBar.getInstance().createStatus();
           status.setShowProgressIndicator(true);
-         status.setIcon(res.getImage("m1.jpg").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
+       //  status.setIcon(res.getImage("tick.jpg").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
                status.setMessage("Medicaments ajoutee avec succseee ");
                     status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
 

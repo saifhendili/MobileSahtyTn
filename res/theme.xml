@@ -145,7 +145,7 @@
         <val key="Container2.sel#margin" value="0.0,0.0,2.0,2.0" />
         <val key="Container2.sel#padding" value="0.0,0.0,5.0,5.0" />
         <val key="DatePickerDay.align" value="4" />
-        <val key="DatePickerDay.fgColor" value="ffffff" />
+        <val key="DatePickerDay.fgColor" value="0000" />
         <font key="DatePickerDay.font" type="ttf" face="0" style="0" size="0" name="native:MainThin" family="native:MainThin" sizeSettings="3" actualSize="4.5" />
         <val key="DatePickerDay.sel#align" value="4" />
         <val key="DatePickerDay.sel#fgColor" value="777777" />
@@ -160,7 +160,7 @@
         <val key="DatePickerEvent.sel#transparency" value="0" />
         <val key="DatePickerEvent.transparency" value="0" />
         <val key="DatePickerMonth.align" value="4" />
-        <val key="DatePickerMonth.fgColor" value="ffffff" />
+        <val key="DatePickerMonth.fgColor" value="0" />
         <font key="DatePickerMonth.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
         <val key="DatePickerMonth.sel#align" value="4" />
         <val key="DatePickerMonth.sel#fgColor" value="777777" />
@@ -198,7 +198,7 @@
         <val key="Label3.sel#transparency" value="0" />
         <val key="Label3.transparency" value="0" />
         <val key="LargeWhiteText.align" value="1" />
-        <val key="LargeWhiteText.fgColor" value="ffffff" />
+        <val key="LargeWhiteText.fgColor" value="00000" />
         <font key="LargeWhiteText.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="3.5" />
         <val key="Link.fgColor" value="0" />
         <font key="Link.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="2.5" />
@@ -210,7 +210,7 @@
         <val key="Link.sel#transparency" value="0" />
         <val key="Link.transparency" value="0" />
         <val key="LogoLabel.align" value="4" />
-        <val key="LogoLabel.fgColor" value="ffffff" />
+        <val key="LogoLabel.fgColor" value="00000" />
         <font key="LogoLabel.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="3.0" />
         <val key="LogoLabel.padUnit" value="2,0,2,0" />
         <val key="LogoLabel.padding" value="3.0,3.0,0.0,0.0" />
@@ -410,10 +410,10 @@
         <val key="TextHint.fgColor" value="0" />
         <val key="TextHint.sel#align" value="4" />
         <val key="Title.align" value="4" />
-        <val key="Title.fgColor" value="ffffff" />
+        <val key="Title.fgColor" value="00000" />
         <font key="Title.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="3.0" />
         <val key="Title.textDecoration" value="0" />
-        <val key="TitleCommand.fgColor" value="ffffff" />
+        <val key="TitleCommand.fgColor" value="00000" />
         <font key="TitleCommand.font" type="ttf" face="0" style="0" size="0" name="native:MainLight" family="native:MainLight" sizeSettings="3" actualSize="3.0" />
         <val key="TitleCommand.padUnit" value="2,2,2,2" />
         <val key="TitleCommand.padding" value="2.0,2.0,2.0,2.0" />
@@ -462,6 +462,7 @@
     </theme>
     <image name="tick.jpg"  />
     <image name="timeline-background.jpg"  />
+    <image name="toook.jpg" type="multi"  />
     <image name="twitter-logo.png" type="multi"  />
     <image name="user1.png"  />
     <image name="ValidTextField.borderBottom_1.png" type="multi"  />

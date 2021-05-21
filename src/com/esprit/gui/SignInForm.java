@@ -32,7 +32,6 @@ import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.services.ServiceUtilisateur;
 
-
 /**
  * Sign in UI
  *
@@ -61,12 +60,11 @@ public class SignInForm extends BaseForm {
         Button signUp = new Button("Sign Up");
         
         //mp oublié
-        Button  mp = new Button("oublier mot de passe?","CenterLabel");
-        
+        Button  mp = new Button(" mot de passe oublié ?","CenterLabel");
         
         signUp.addActionListener(e -> new SignUpForm(res).show());
         signUp.setUIID("Link");
-        Label doneHaveAnAccount = new Label("Vous n'avez aucune compte?");
+        Label doneHaveAnAccount = new Label("Vous n'avez pas de compte?");
         
         
         
@@ -98,7 +96,7 @@ public class SignInForm extends BaseForm {
         
         mp.addActionListener((e) -> {
            
-    new ActivateForm(res).show();
+          new ActivateForm(res).show();
             
             
         });

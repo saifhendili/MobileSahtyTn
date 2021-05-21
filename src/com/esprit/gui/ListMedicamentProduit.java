@@ -233,7 +233,7 @@ super.addSideMenu(res);
     ArrayList<FormAide>list=ProduitAideService.getInstance().AfficherProduit();
     for(FormAide rec:list){
          if(rec.getVille().contains("Medicamant")){
-      String url3 = "http://127.0.0.1:8000/uploads/"+ rec.getImg();
+      String url3 = "http://127.0.0.1:8000/uploads/"+rec.getImg();
    //  String url3="";
         Image placeHolder=Image.createImage(120,90);
         EncodedImage enc= EncodedImage.createFromImage(placeHolder,false);

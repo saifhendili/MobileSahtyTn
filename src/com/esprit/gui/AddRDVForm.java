@@ -56,7 +56,7 @@ public class AddRDVForm extends BaseForm{
         type = new Vector();
          ArrayList<Utilisateur>list=ServiceRDV.getInstance().getAllUsers();
     for(Utilisateur rec:list){
-        if(rec.getType().contains("Medicin"))
+        if(rec.getType().contains("Medecin"))
         type.add(rec.getNom()+rec.getPrenom());
         }
         ComboBox<String>roles = new ComboBox<>(type);
@@ -101,7 +101,7 @@ public class AddRDVForm extends BaseForm{
            ToastBar.Status status = ToastBar.getInstance().createStatus();
            status.setShowProgressIndicator(true);
            
-           status.setIcon(res.getImage("tick.jpg").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
+       //    status.setIcon(res.getImage("tick.jpg").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
            status.setMessage("Votre rendez-vous est ajouté avec succés");
            status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
            status.show();

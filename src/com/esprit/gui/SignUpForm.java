@@ -34,7 +34,6 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 import com.esprit.services.ServiceUtilisateur;
-
 import java.util.Vector;
 
 /**
@@ -67,10 +66,10 @@ public class SignUpForm extends BaseForm {
         //Vector 3ibara ala array 7atit fiha roles ta3na ba3d nzidouhom lel comboBox
         Vector<String> type;
         type = new Vector();
-           type.add("Patient");
-        type.add("Pharmacie");
-        type.add("Medicin");
         
+        type.add("patient");
+        type.add("Medecin");
+        type.add("Pharmacie");
         ComboBox<String>roles = new ComboBox<>(type);
         
         
@@ -89,7 +88,7 @@ public class SignUpForm extends BaseForm {
         Button signIn = new Button("Sign In");
         signIn.addActionListener(e -> new SignInForm(res).show());
         signIn.setUIID("Link");
-        Label alreadHaveAnAccount = new Label("Already have an account?");
+        Label alreadHaveAnAccount = new Label("Vous avez déja un compte?");
         
         Container content = BoxLayout.encloseY(
                 new Label("Sign Up", "LogoLabel"),
@@ -121,7 +120,7 @@ public class SignUpForm extends BaseForm {
         next.addActionListener((e) -> {
             
             ServiceUtilisateur.getInstance().signup( email,nom,prenom, password, adress, roles,speciality, res);
-            Dialog.show("Success","account is saved","OK",null);
+            Dialog.show("Success","compte enregistré ! ","OK",null);
             new SignInForm(res).show();
         });
     }

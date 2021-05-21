@@ -8,15 +8,17 @@ package com.esprit.services;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
+import com.codename1.io.MultipartRequest;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.ComboBox;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.TextField;
 import com.codename1.ui.util.Resources;
-import com.esprit.gui.ProfileForm;
-import com.esprit.gui.SessionManager;
 import com.esprit.utils.Statics;
 
+import com.esprit.gui.ProfileForm;
+import com.esprit.gui.SessionManager;
+import java.io.IOException;
 import java.util.Map;
 import java.util.Vector;
 
@@ -33,7 +35,7 @@ public class ServiceUtilisateur {
     public static boolean resultOk = true;
     String json;
 
-    //initilisation connection request 
+   
     private ConnectionRequest req;
     
     
@@ -49,37 +51,35 @@ public class ServiceUtilisateur {
         req = new ConnectionRequest();
         
     }
-    
-    //Signupemail,nom,prenom, password, adress, type,speciality, res
+
     public void signup(TextField email,TextField nom,TextField prenom,TextField password,TextField adress, ComboBox<String>type ,TextField speciality, Resources res ) {
         
      
         
-        String url = Statics.BASE_URL+"/user/signup?email=\""+email.getText().toString()+"\"&nom=\""+nom.getText().toString()+
-                "\"&prenom=\""+prenom.getText().toString()+"\"&password=\""+password.getText().toString()+"\"&adress=\""+adress.getText().toString()+"\"&type=\""+type.getSelectedItem().toString()+"\"&speciality=\""+speciality.getText().toString()+"\"";
+        String url = Statics.BASE_URL+"/user/signup/"+email.getText().toString()+"/"+nom.getText().toString()+
+                "/"+prenom.getText().toString()+"/"+password.getText().toString()+"/"+adress.getText().toString()+"/"+type.getSelectedItem().toString()+"/"+speciality.getText().toString();
         
         req.setUrl(url);
         req.setPost(false);
-        //Control saisi
+      //contrôle de saisie  
         if(nom.getText().equals(" ") && prenom.getText().equals(" ")&& password.getText().equals(" ") && email.getText().equals(" ")) {
             
             Dialog.show("Erreur","Veuillez remplir les champs","OK",null);
             
         }
         
-        //hethi wa9t tsir execution ta3 url 
+       
         req.addResponseListener((e)-> {
          
-            //njib data ly7atithom fi form 
-            byte[]data = (byte[]) e.getMetaData();//lazm awl 7aja n7athrhom ke meta data ya3ni na5o id ta3 kol textField 
-            String responseData = new String(data);//ba3dika na5o content 
+            byte[]data = (byte[]) e.getMetaData();
+            String responseData = new String(data); 
             
             System.out.println("data ===>"+responseData);
         }
         );
         
         
-        //ba3d execution ta3 requete ely heya url nestanaw response ta3 server.
+      
         NetworkManager.getInstance().addToQueueAndWait(req);
         
             
@@ -92,7 +92,7 @@ public class ServiceUtilisateur {
     public void signin(TextField email,TextField password, Resources rs ) {
         
         
-        String url = Statics.BASE_URL+"/user/signin?email=\""+email.getText().toString()+"\"&password=\""+password.getText().toString()+"\"";
+        String url = Statics.BASE_URL+"/user/signin/"+email.getText().toString()+"/"+password.getText().toString();
         req = new ConnectionRequest(url, false); //false ya3ni url mazlt matba3thtich lel server
         req.setUrl(url);
         
@@ -117,21 +117,16 @@ public class ServiceUtilisateur {
              
                 //Session 
                 float id = Float.parseFloat(user.get("id").toString());
-                SessionManager.setId((int)id);//jibt id ta3 user ly3ml login w sajltha fi session ta3i
-                
+                SessionManager.setId((int)id);
                 SessionManager.setPassword(user.get("password").toString());
                 SessionManager.setNom(user.get("nom").toString());
                 SessionManager.setPassword(user.get("prenom").toString());
                 SessionManager.setEmail(user.get("email").toString());
                 
-                //photo 
+       
                 
-//                if(user.get("photo") != null)
-//                    SessionManager.se(user.get("photo").toString());
-//                
-                
-                if(user.size() >0 ) // l9a user
-               //     new ListReclamationForm(rs).show();//yemchi lel list reclamation
+                if(user.size() >0 ) 
+               //   
                     new ProfileForm(rs).show();
                     
                     }
@@ -145,17 +140,17 @@ public class ServiceUtilisateur {
             
         });
     
-         //ba3d execution ta3 requete ely heya url nestanaw response ta3 server.
+        
         NetworkManager.getInstance().addToQueueAndWait(req);
     }
     
 
-  //heki 5dmtha taw nhabtha ala description
+ 
     public String getPasswordByEmail(String email, Resources rs ) {
         
         
-        String url = Statics.BASE_URL+"/user/getPasswordByEmail?email=\""+email+"\"";
-        req = new ConnectionRequest(url, false); //false ya3ni url mazlt matba3thtich lel server
+        String url = Statics.BASE_URL+"/user/getPasswordByEmail/"+email;
+        req = new ConnectionRequest(url, false); 
         req.setUrl(url);
         
         req.addResponseListener((e) ->{
@@ -183,9 +178,41 @@ public class ServiceUtilisateur {
             
         });
     
-         //ba3d execution ta3 requete ely heya url nestanaw response ta3 server.
+        
         NetworkManager.getInstance().addToQueueAndWait(req);
     return json;
     }
 
+    public static void EditUser(String nom, String password, String email
+    ){
+        
+    String url = Statics.BASE_URL+"/user/editUser?email="+email+ "&nom="+nom+
+                "\"&password=\""+password+"\"";
+               MultipartRequest req = new MultipartRequest();
+                
+               req.setUrl(url);
+               req.setPost(true);
+               req.addArgument("id", String.valueOf(SessionManager.getId()));
+                req.addArgument("email", email);
+             
+               req.addArgument("nom", nom);
+//              req.addArgument("prenom", prenom);
+               req.addArgument("password", password);
+//                   req.addArgument("adress", adress);
+//                        req.addArgument("type", type);
+                            
+               System.out.println(email);
+               req.addResponseListener((response)-> {
+                   
+                   byte[] data = (byte[]) response.getMetaData();
+                   String s = new String(data);
+                   System.out.println(s);
+                  
+               });
+               NetworkManager.getInstance().addToQueueAndWait(req);
+    }
+    
+    
+    
+    
 }

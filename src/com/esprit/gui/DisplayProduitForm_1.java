@@ -175,10 +175,21 @@ createLineSeparator();
            
          ServiceVaccin.getInstance().addpaniervac(rec);
   
-                  InfiniteProgress ip = new InfiniteProgress();
+         
+        ToastBar.getInstance().setPosition(BOTTOM);
+           ToastBar.Status status = ToastBar.getInstance().createStatus();
+           status.setShowProgressIndicator(true);
+      //     status.setIcon(res.getImage().scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
+           status.setMessage("Votre vaccin est reserver avec succés");
+           status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
+           status.show();
+               //  iDialog.dispose(); //NAHIW LOADING BAED AJOUT
+                        InfiniteProgress ip = new InfiniteProgress();
         final Dialog ipDlg = ip.showInifiniteBlocking(); 
         
-        
+           new ListRDVForm(res).show();
+
+                 refreshTheme();
          new ListVaccin(res).show();
       
         });

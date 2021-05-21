@@ -242,9 +242,9 @@ image.setBackgroundType(Style.BACKGROUND_IMAGE_SCALED_FILL);
 //     new AddReservationForm(img,res,rec).show();
 //        
 //       });
-////        prenomuser.addPointerPressedListener(l->{
-////    new displayProduitForm(img,res,rec).show(); });
-////        
+//        prenomuser.addPointerPressedListener(l->{
+//    new displayProduitForm(img,res,rec).show(); });
+//        
         image.addPointerPressedListener(l->{
       new displayMedicamentsForm(img,res,rec).show(); });
         cnt.add(BorderLayout.CENTER,BoxLayout.encloseY(

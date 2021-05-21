@@ -56,7 +56,7 @@ tfnom.setMinimumElementsShownInPopup(5);
                        Dialog.show("ERROR", "Server Error",new Command("Ok"));
            ToastBar.Status status = ToastBar.getInstance().createStatus();
           status.setShowProgressIndicator(true);
-         status.setIcon(res.getImage("m1.jpg").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
+          //         status.setIcon(res.getImage("m1.jpg").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
                status.setMessage("Medicaments ajoutee avec succseee ");
                     status.setExpires(10000);  // only show the status for 3 seconds, then have it automatically clear
 
